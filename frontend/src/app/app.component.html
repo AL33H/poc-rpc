@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="card">
+    <h1>? gRPC Server Streaming PoC</h1>
+    <p class="subtitle">Angular 19 + Spring Boot 3 + gRPC-Web</p>
+
+    <div class="status-section" [ngClass]="getStatusClass()">
+      <div class="status-badge">
+        <span class="status-icon">
+          @if (status() === 'PROCESSING') {
+            <span class="spinner"></span>
+          } @else if (status() === 'SUCCESS') {
+            ?
+          } @else if (status() === 'ERRO') {
+            ?
+          } @else {
+            ?
+          }
+        </span>
+        <span class="status-text">{{ status() }}</span>
+      </div>
+      
+      <h2 class="message">{{ message() }}</h2>
+      
+      @if (payload()) {
+        <div class="payload">
+          <strong>Payload:</strong>
+          <pre>{{ payload() }}</pre>
+        </div>
+      }
+    </div>
+
+    <button 
+      class="btn-primary" 
+      (click)="startProcessing()"
+      [disabled]="isProcessing()">
+      @if (isProcessing()) {
+        <span class="spinner-small"></span>
+        Processando...
+      } @else {
+        Iniciar Processamento
+      }
+    </button>
+
+    <div class="logs-section">
+      <h3>? Logs do Stream</h3>
+      <div class="logs">
+        @for (log of logs(); track $index) {
+          <div class="log-entry">{{ log }}</div>
+        }
+        @empty {
+          <div class="log-empty">Nenhum log ainda...</div>
+        }
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>?? Como funciona:</h4>
+      <ol>
+        <li>Clique em "Iniciar Processamento"</li>
+        <li>O backend envia <strong>imediatamente</strong> a primeira resposta: "Processando..."</li>
+        <li>O backend simula processamento pesado (15-20 segundos)</li>
+        <li>O backend envia a <strong>segunda resposta</strong> no mesmo stream: "Processado com Sucesso"</li>
+        <li>O stream é finalizado</li>
+      </ol>
+    </div>
+  </div>
+</div>
+

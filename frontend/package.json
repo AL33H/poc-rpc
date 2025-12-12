@@ -1,0 +1,35 @@
+{
+  "name": "grpc-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "proto:generate": "protoc --js_out=import_style=commonjs,binary:./src/generated --grpc-web_out=import_style=typescript,mode=grpcwebtext:./src/generated -I ../proto ../proto/processing.proto"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/platform-browser-dynamic": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "grpc-web": "^1.5.0",
+    "google-protobuf": "^3.21.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.0",
+    "@angular/cli": "^19.0.0",
+    "@angular/compiler-cli": "^19.0.0",
+    "@types/google-protobuf": "^3.15.12",
+    "typescript": "~5.6.0"
+  }
+}
+

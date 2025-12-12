@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc.processing";
+option java_outer_classname = "ProcessingProto";
+
+package processing;
+
+// Serviço de processamento com Server Streaming
+service ProcessingService {
+  // Método que retorna um stream de respostas
+  rpc StartProcessing(ProcessingRequest) returns (stream ProcessingResponse);
+}
+
+// Mensagem de requisição (pode ser vazia ou conter um ID)
+message ProcessingRequest {
+  string request_id = 1;
+}
+
+// Mensagem de resposta com status e payload
+message ProcessingResponse {
+  string status = 1;
+  string message = 2;
+  string payload = 3;
+  int64 timestamp = 4;
+}
+
